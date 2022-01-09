@@ -89,7 +89,7 @@ This is an example job configuration to use this action.
         uses: actions/github-script@v5
         if: steps.plan.outputs.has-changes == 'true'
         env:
-          changes: ${{ steps.plan.outputs.results }}
+          changes: ${{ steps.describe-change-set.outputs.results }}
         with:
           script: |
             github.rest.issues.createComment({
