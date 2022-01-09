@@ -33,4 +33,4 @@ runs:
     - ${{ inputs.stack_name }}
     - ${{ inputs.template_body }}
     - ${{ inputs.options }}
-    - ${{ inputs.environment
+    - ${{ inputs.environment }}
