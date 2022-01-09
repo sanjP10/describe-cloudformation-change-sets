@@ -1,5 +1,6 @@
 """ Utility script to convert describe change set json results to HTML formatted table """
 import json
+import os
 import sys
 
 DEFAULT = "-"
@@ -91,4 +92,4 @@ def execute(stack, change_set_path, env):
 
 
 if __name__ == '__main__':
-    print(execute(sys.argv[1], sys.argv[2], sys.argv[3]))
+    print(execute(sys.argv[1], sys.argv[2], os.getenv('INPUT_ENVIRONMENT')))
