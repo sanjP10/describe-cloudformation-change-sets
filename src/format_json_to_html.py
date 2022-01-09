@@ -65,7 +65,7 @@ def execute(stack, change_set_path, env=None):
     if env:
         body = f"<h1>Change Set for {env}</h1>"
     else:
-        body = f"<h1>Change Set</h1>"
+        body = "<h1>Change Set</h1>"
 
     body += f"<h2>Stack Name: {stack}</h2><br>"
 
