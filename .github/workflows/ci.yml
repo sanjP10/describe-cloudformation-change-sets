@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - uses: brpaz/hadolint-action@v1.2.1
+      - uses: hadolint/hadolint-actio@v1.6.0
         with:
           dockerfile: Dockerfile
           ignore: DL3008 DL3009 DL3015
