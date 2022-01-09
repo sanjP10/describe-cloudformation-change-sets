@@ -1,5 +1,5 @@
 name: 'sanjP10/describe-cloudformation-change-sets'
-description: 'Describe Cloudformation Change Set'
+description: 'Describe Cloudformation Change Set as HTML Report'
 author: 'Sanjay Patel (@sanjP10)'
 branding:
   icon: 'list'
