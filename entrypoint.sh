@@ -11,12 +11,7 @@ change_set_name=$(aws cloudformation list-change-sets --stack-name "$INPUT_STACK
 if [ "$change_set_name" != "null" ]; then
   aws cloudformation describe-change-set --stack-name "$INPUT_STACK_NAME" --change-set-name "$change_set_name" --output json > "$INPUT_STACK_NAME".json
   aws cloudformation delete-change-set --stack-name "$INPUT_STACK_NAME" --change-set-name="$change_set_name"
-  if [ -z "$INPUT_ENVIRONMENT" ]
-  then
-        results=$(python format_json_to_html.py "$INPUT_STACK_NAME" "$INPUT_STACK_NAME".json)
-  else
-        results=$(python format_json_to_html.py "$INPUT_STACK_NAME" "$INPUT_STACK_NAME".json "$INPUT_ENVIRONMENT")
-  fi
+  results=$(python format_json_to_html.py "$INPUT_STACK_NAME" "$INPUT_STACK_NAME".json "$INPUT_ENVIRONMENT")
 
   has_changes="true"
   echo "::set-output name=results::$results"

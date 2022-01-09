@@ -57,7 +57,7 @@ class ChangeSet:
         return "<br>".join(arr)
 
 
-def execute(stack, change_set_path, env=None):
+def execute(stack, change_set_path, env):
     """ Execute Processing """
     with open(change_set_path, 'rb') as file:
         data = json.load(file)
@@ -91,7 +91,4 @@ def execute(stack, change_set_path, env=None):
 
 
 if __name__ == '__main__':
-    if sys.argv[3]:
-        print(execute(sys.argv[1], sys.argv[2], sys.argv[3]))
-    else:
-        print(execute(sys.argv[1], sys.argv[2]))
+    print(execute(sys.argv[1], sys.argv[2], sys.argv[3]))
