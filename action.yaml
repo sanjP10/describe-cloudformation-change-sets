@@ -1,0 +1,36 @@
+name: 'sanjP10/describe-cloudformation-change-sets'
+description: 'Describe Cloudformation Change Set as HTML Report'
+author: 'Sanjay Patel (@sanjP10)'
+branding:
+  icon: 'list'
+  color: 'green'
+inputs:
+  stack_name:
+    description: 'Cloudformation Stack Name'
+    required: true
+  template_file:
+    description: 'Cloudformation template file path'
+    required: true
+  options:
+    description: 'Cloudformation deploy additional options.
+     --no-fail-on-empty-changeset --no-execute-changeset already used.
+    Format and documentation for options can be found here - https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/'
+    required: false
+    default: ''
+  environment:
+    description: 'If you have an environment name, this will be included in your html report. Useful if you have a PR deployed to multiple environments'
+    required: false
+    default: ''
+outputs:
+  results:
+    description: 'HTML String with all changes'
+  has-changes:
+    description: 'Indicates whether there were any changes'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.stack_name }}
+    - ${{ inputs.template_body }}
+    - ${{ inputs.options }}
+    - ${{ inputs.environment
