@@ -1,0 +1,61 @@
+{
+    "Changes": [
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Add",
+                "LogicalResourceId": "queue1",
+                "ResourceType": "AWS::SQS::Queue",
+                "Scope": [],
+                "Details": []
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Add",
+                "LogicalResourceId": "queue2",
+                "ResourceType": "AWS::SQS::Queue",
+                "Scope": [],
+                "Details": []
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Add",
+                "LogicalResourceId": "queue3",
+                "ResourceType": "AWS::SQS::Queue",
+                "Scope": [],
+                "Details": []
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Remove",
+                "LogicalResourceId": "queue4",
+                "ResourceType": "AWS::SQS::Queue",
+                "Scope": [],
+                "Details": []
+            }
+        }
+    ],
+    "ChangeSetName": "awscli-cloudformation-package-deploy-1641657014",
+    "ChangeSetId": "arn:aws:cloudformation:eu-west-1:195239718547:changeSet/awscli-cloudformation-package-deploy-1641657014/110c7c1c-f88f-4ef3-a8e3-f832fb76068b",
+    "StackId": "arn:aws:cloudformation:eu-west-1:195239718547:stack/test-sqs/e293d890-7099-11ec-bf03-0291bbc8f0c1",
+    "StackName": "test-sqs",
+    "Description": "Created by AWS CLI at 2022-01-08T15:50:14.152663 UTC",
+    "Parameters": null,
+    "CreationTime": "2022-01-08T15:50:11.930000+00:00",
+    "ExecutionStatus": "AVAILABLE",
+    "Status": "CREATE_COMPLETE",
+    "StatusReason": null,
+    "NotificationARNs": [],
+    "RollbackConfiguration": {},
+    "Capabilities": [],
+    "Tags": null,
+    "ParentChangeSetId": null,
+    "IncludeNestedStacks": false,
+    "RootChangeSetId": null
+}
