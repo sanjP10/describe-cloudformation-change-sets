@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Release
         uses: sanjP10/release-action@1.0.0
         id: validate-release
@@ -20,6 +18,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - uses: brpaz/hadolint-action@v1.2.1
+        with:
+          dockerfile: Dockerfile
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -35,8 +38,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
       - name: Setup python
         uses: actions/setup-python@v2
         with:
