@@ -8,7 +8,7 @@ inputs:
   stack_name:
     description: 'Cloudformation Stack Name'
     required: true
-  template_body:
+  template_file:
     description: 'Cloudformation template file path'
     required: true
   options:
