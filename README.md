@@ -40,9 +40,12 @@ This action requires the following set of permissions:
             "Effect": "Allow",
             "Action": [
                 "cloudformation:CreateStack",
+                "cloudformation:DescribeStacks",
                 "cloudformation:CreateChangeSet",
                 "cloudformation:DescribeChangeSet",
-                "cloudformation:DeleteChangeSet"
+                "cloudformation:ListStackResources",
+                "cloudformation:DeleteChangeSet",
+                "cloudformation:DeleteStack"
             ],
             "Resource": "*"
         }
@@ -50,7 +53,14 @@ This action requires the following set of permissions:
 }
 ```
 
-You can restrict this down to specific stacks if desired, please not Ids of change-sets are randomly generated, so you will require a wildcard,`*`, somewhere in your resource expression
+You can restrict this down to specific stacks if desired, please not Ids of change-sets are randomly
+generated, so you will require a wildcard,`*`, somewhere in your resource expression.
+
+**Note:** `DeleteStack` is required because if `CreateChangeSet` is called a second time on a stack
+that's never been deployed with resources and the state is `REVIEW_IN_PROGRESS` it will fail.
+
+This action checks for the number of deployed resources and this state, 
+if it is the resources is `0` and the state is in `REVIEW_IN_PROGRESS` we will delete teh stack.
 
 ## Usage
 
