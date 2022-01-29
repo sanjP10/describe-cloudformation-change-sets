@@ -15,6 +15,12 @@ if [ "$change_set_name" != "null" ]; then
 
   has_changes="true"
   echo "::set-output name=results::$results"
+  ## cleanup of empty stack if no resources and status is in review in progress, enables create change set to work
+  numOfResources=$(aws cloudformation list-stack-resources --stack-name "$INPUT_STACK_NAME" --output json | jq .StackResourceSummaries | jq length)
+  status=$(aws cloudformation describe-stacks --stack-name "$INPUT_STACK_NAME" --output json | jq .Stacks[0].StackStatus | tr -d '"')
+  if [ "$status" == "REVIEW_IN_PROGRESS" ] && [ "$numOfResources" == "0" ]; then
+    aws cloudformation delete-stack --stack-name "$INPUT_STACK_NAME"
+  fi
 fi
 
 echo "::set-output name=has-changes::$has_changes"
