@@ -14,7 +14,7 @@ if [ "$change_set_name" != "null" ]; then
   results=$(python /format_json_to_html.py "$INPUT_STACK_NAME" "$INPUT_STACK_NAME".json "$INPUT_ENVIRONMENT")
   
   numberOfChanges=$(cat "$INPUT_STACK_NAME".json | jq .Changes | jq length)
-  if [ "$a" != "0" ]; then
+  if [ "$numberOfChanges" != "0" ]; then
     has_changes="true"
   fi
 
