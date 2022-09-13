@@ -13,6 +13,7 @@ if [ "$change_set_name" != "null" ]; then
   aws cloudformation delete-change-set --stack-name "$INPUT_STACK_NAME" --change-set-name="$change_set_name"
   results=$(python /format_json_to_html.py "$INPUT_STACK_NAME" "$INPUT_STACK_NAME".json "$INPUT_ENVIRONMENT")
   
+  # shellcheck disable=SC2002
   numberOfChanges=$(cat "$INPUT_STACK_NAME".json | jq .Changes | jq length)
   if [ "$numberOfChanges" != "0" ]; then
     has_changes="true"
