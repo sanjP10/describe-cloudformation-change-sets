@@ -24,6 +24,8 @@ jobs:
           ignore: DL3008 DL3009 DL3015 DL3059
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -e SC2086
       - name: Setup python
         uses: actions/setup-python@v2
         with:
