@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Release
         uses: sanjP10/release-action@1.0.0
         id: validate-release
@@ -17,13 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: hadolint/hadolint-action@v1.6.0
         with:
           dockerfile: Dockerfile
           ignore: DL3008 DL3009 DL3015 DL3059
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -e SC2086
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -38,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -57,7 +59,7 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Release
         uses: sanjP10/release-action@1.0.0
         id: create-release

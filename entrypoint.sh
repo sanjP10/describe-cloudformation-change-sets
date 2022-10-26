@@ -19,7 +19,7 @@ if [ "$change_set_name" != "null" ]; then
     has_changes="true"
   fi
 
-  echo "::set-output name=results::$results"
+  echo "results=$results" >> $GITHUB_OUTPUT
   ## cleanup of empty stack if no resources and status is in review in progress, enables create change set to work
   numOfResources=$(aws cloudformation list-stack-resources --stack-name "$INPUT_STACK_NAME" --output json | jq .StackResourceSummaries | jq length)
   status=$(aws cloudformation describe-stacks --stack-name "$INPUT_STACK_NAME" --output json | jq .Stacks[0].StackStatus | tr -d '"')
@@ -28,4 +28,4 @@ if [ "$change_set_name" != "null" ]; then
   fi
 fi
 
-echo "::set-output name=has-changes::$has_changes"
+echo "has-changes=$has_changes" >> $GITHUB_OUTPUT
